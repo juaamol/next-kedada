@@ -11,14 +11,6 @@ function countdown(dateEndContdown) {
 
   function calculate() {
     let dateStart = new Date();
-    dateStart = new Date(
-      dateStart.getUTCFullYear(),
-      dateStart.getUTCMonth(),
-      dateStart.getUTCDate(),
-      dateStart.getUTCHours(),
-      dateStart.getUTCMinutes(),
-      dateStart.getUTCSeconds(),
-    );
     let timeRemaining = parseInt((dateEnd - dateStart.getTime()) / 1000);
 
     if (timeRemaining >= 0) {
@@ -35,7 +27,10 @@ function countdown(dateEndContdown) {
       document.getElementById('minutes').innerHTML = ('0' + minutes).slice(-2);
       document.getElementById('seconds').innerHTML = ('0' + seconds).slice(-2);
     } else {
-      return;
+      document.getElementById('days').innerHTML = '00';
+      document.getElementById('hours').innerHTML = '00';
+      document.getElementById('minutes').innerHTML = '00';
+      document.getElementById('seconds').innerHTML = '00';
     }
   }
 }
