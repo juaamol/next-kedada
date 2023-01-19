@@ -7,6 +7,7 @@ function countdown(dateEndContdown) {
     return;
   }
 
+  calculate();
   timer = setInterval(calculate, 1000);
 
   function calculate() {
@@ -21,16 +22,35 @@ function countdown(dateEndContdown) {
       minutes = parseInt(timeRemaining / 60);
       timeRemaining = timeRemaining % 60;
       seconds = parseInt(timeRemaining);
-
-      document.getElementById('days').innerHTML = parseInt(days, 10);
-      document.getElementById('hours').innerHTML = ('0' + hours).slice(-2);
-      document.getElementById('minutes').innerHTML = ('0' + minutes).slice(-2);
-      document.getElementById('seconds').innerHTML = ('0' + seconds).slice(-2);
     } else {
-      document.getElementById('days').innerHTML = '00';
-      document.getElementById('hours').innerHTML = '00';
-      document.getElementById('minutes').innerHTML = '00';
-      document.getElementById('seconds').innerHTML = '00';
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
     }
+
+    setDays(days);
+    setHours(hours);
+    setMinutes(minutes);
+    setSeconds(seconds);
   }
+}
+function setDays(days) {
+  setTime('days', parseInt(days, 10));
+}
+
+function setHours(hours) {
+  setTime('hours', ('0' + hours).slice(-2));
+}
+
+function setMinutes(minutes) {
+  setTime('minutes', ('0' + minutes).slice(-2));
+}
+
+function setSeconds(seconds) {
+  setTime('seconds', ('0' + seconds).slice(-2));
+}
+
+function setTime(unit, time) {
+  document.getElementById(unit).innerHTML = time;
 }
